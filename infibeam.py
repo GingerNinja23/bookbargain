@@ -14,10 +14,10 @@ def infibeam(isbn):
 	try:
 		response = br.open(i_link)
 	except Exception, e:
-		return 'NA'
+		return {'price':'NA','url':i_link}
 	i_soup = BeautifulSoup(response.read())
 	i_class = i_soup.findAll('span',class_='final-price')
 	if not i_class:
-		return 'NA'
+		return {'price':'NA','url':i_link}
 	i_price = re.findall(r'</span> (.*?)</span>',str(i_class))[0]
-	return i_price
+	return {'price':i_price,'url':i_link}

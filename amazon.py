@@ -18,12 +18,12 @@ def amazon(isbn):
 	try:
 		response = br.open(a_link)
 	except Exception, e:
-		return 'NA'
+		return {'price':'NA','url':a_link}
 	a_soup = BeautifulSoup(response.read())
 	a_class = a_soup.findAll('span',class_="price3P")
 	if not a_class:
-		return 'NA'
+		return {'price':'NA','url':a_link}
 	else:
 		a_class = a_class[0]
 	a_price = re.findall(r'</span> (.*?)</span>',str(a_class))[0]
-	return a_price.replace('.00','')
+	return {'price':a_price.replace('.00',''),'url':a_link}

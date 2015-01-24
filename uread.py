@@ -17,12 +17,12 @@ def uread(isbn):
 	try:
 		response = br.open(u_link)
 	except Exception, e:
-		return 'NA'
+		return {'price':'NA','url':u_link}
 	u_soup = BeautifulSoup(response.read())
 	u_tag = u_soup.select('#ctl00_phBody_ProductDetail_lblourPrice')
 	if not u_tag:
-		return 'NA'
+		return {'price':'NA','url':u_link}
 	else:
 		u_tag = u_tag[0]
 	u_price = re.findall(r'</span>(.*?)</label>',str(u_tag))[0]
-	return u_price
+	return {'price':u_price,'url':u_link}
