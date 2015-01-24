@@ -15,7 +15,10 @@ def amazon(isbn):
 	br.set_handle_robots(False)   # ignore robots
 	br.set_handle_refresh(False)  # can sometimes hang without this
 	br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]           # [('User-agent', 'Firefox')]
-	response = br.open(a_link)
+	try:
+		response = br.open(a_link)
+	except Exception, e:
+		return 'NA'
 	a_soup = BeautifulSoup(response.read())
 	a_class = a_soup.findAll('span',class_="price3P")
 	if not a_class:
