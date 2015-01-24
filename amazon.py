@@ -18,5 +18,7 @@ def amazon(isbn):
 	response = br.open(a_link)
 	a_soup = BeautifulSoup(response.read())
 	a_class = a_soup.findAll('span',class_="price3P")[0]
+	if not a_class:
+		return 'NA'
 	a_price = re.findall(r'</span> (.*?)</span>',str(a_class))[0]
 	return a_price.replace('.00','')
