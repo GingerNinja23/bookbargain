@@ -7,6 +7,7 @@ import re
 
 def flipkart(isbn):
 	#Getting the Source
+	start_time = time.time()
 	f_link = "http://www.flipkart.com/search?q="+isbn
 	br = mechanize.Browser()
 	br.set_handle_robots(False)   # ignore robots
@@ -27,29 +28,28 @@ def flipkart(isbn):
 		if(f_price_temp):
 			f_price=(f_price_temp.string).replace('Rs. ','')
 		else:
-			f_price="Not Available"
+			f_price="NA"
 
 		f_author_temp = (f_soup.find_all(href=re.compile("/author/[\w\s,.$><?@#$%^&*()_:-]+"))[0])
 		if(f_author_temp):
 			f_author = f_author_temp.string
 		else:
-			f_author="Unknown"
+			f_author="NA"
 
 		f_img_temp = (f_soup.find_all("img",class_="productImage  current")[0])['data-src']
 		if(f_img_temp):
 			f_img=f_img_temp
 		else:
-			f_img = "Not Available"
+			f_img = "NA"
 
 	else:
-		f_title = "Not Available"
-		f_price="Not Available"
-		f_author="Unknown"
-		f_img = "Not Available"
+		f_title = "NA"
+		f_price="NA"
+		f_author="NA"
+		f_img = "NA"
 
+	print time.time()-start_time
 	flip_dict = {'name':f_title,'price':f_price,'author':f_author,'image_url':f_img}
 
 	return flip_dict
 
-isbn = raw_input()
-print flipkart(isbn)
