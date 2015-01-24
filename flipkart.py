@@ -16,7 +16,12 @@ def flipkart(isbn):
 	try:
 		response = br.open(f_link)
 	except Exception, e:
-		return 'NA'
+		f_title = "NA"
+		f_price="NA"
+		f_author="NA"
+		f_img = "NA"
+		f_desc="NA"
+
 
 	#Creating the soup
 
@@ -60,8 +65,8 @@ def flipkart(isbn):
 		f_desc="NA"
 
 	print time.time()-start_time
-	flip_dict = {'name':f_title,'price':f_price,'author':f_author,'image_url':f_img,'desc':f_desc}
+	flip_dict = {'name':f_title,'price':f_price,'author':f_author,'image_url':f_img,'desc':f_desc,'url':f_link}
 
 	return flip_dict
 
-print flipkart("9789380501932")
+
