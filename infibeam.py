@@ -14,5 +14,7 @@ def infibeam(isbn):
 	response = br.open(i_link)
 	i_soup = BeautifulSoup(response.read())
 	i_class = i_soup.findAll('span',class_='final-price')
+	if not i_class:
+		return 'NA'
 	i_price = re.findall(r'</span> (.*?)</span>',str(i_class))[0]
 	return i_price
