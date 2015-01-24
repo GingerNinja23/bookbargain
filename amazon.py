@@ -6,7 +6,10 @@ import time
 import mechanize
 def amazon(isbn):
 	# isbn = '9789380501932'
-	a_link = "http://www.amazon.in/dp/"+pyisbn.Isbn(isbn).convert(code='978')
+	if len(isbn) == 13:
+		a_link = "http://www.amazon.in/dp/"+pyisbn.Isbn(isbn).convert(code='978')
+	else:
+		a_link = "http://www.amazon.in/dp/"+isbn
 	br = mechanize.Browser()
 	#br.set_all_readonly(False)    # allow everything to be written to
 	br.set_handle_robots(False)   # ignore robots
