@@ -42,7 +42,7 @@ def flipkart(isbn):
 			f_img = "Not Available"
 
 	else:
-		f_title = :"Not Available"
+		f_title = "Not Available"
 		f_price="Not Available"
 		f_author="Unknown"
 		f_img = "Not Available"
