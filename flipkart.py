@@ -42,11 +42,18 @@ def flipkart(isbn):
 		else:
 			f_img = "NA"
 
+		f_desc_temp = f_soup.find_all("div",class_="description-text")
+		if(f_desc_temp):
+			f_desc = f_desc_temp[0].string
+		else:
+			f_desc="NA"
+
 	else:
 		f_title = "NA"
 		f_price="NA"
 		f_author="NA"
 		f_img = "NA"
+		f_desc="NA"
 
 	print time.time()-start_time
 	flip_dict = {'name':f_title,'price':f_price,'author':f_author,'image_url':f_img}
