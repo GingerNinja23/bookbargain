@@ -12,7 +12,7 @@ def infibeam(isbn):
 	br.set_handle_refresh(False)  # can sometimes hang without this
 	br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]           # [('User-agent', 'Firefox')]
 	try:
-		response = br.open(a_link)
+		response = br.open(i_link)
 	except Exception, e:
 		return 'NA'
 	i_soup = BeautifulSoup(response.read())
