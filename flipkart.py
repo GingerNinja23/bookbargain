@@ -47,6 +47,6 @@ def flipkart(isbn):
 		f_author="Unknown"
 		f_img = "Not Available"
 
-	flip_dict = {'name':f_title,'price':'f_price','author':f_author,'image_url':f_img}
+	flip_dict = {'name':f_title,'price':f_price,'author':f_author,'image_url':f_img}
 
 	return flip_dict
