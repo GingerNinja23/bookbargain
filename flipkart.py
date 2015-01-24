@@ -22,9 +22,20 @@ def flipkart(isbn):
 
 	#Getting the data
 	f_name_temp =(f_soup.find(itemprop="name"))
-	if(not f_name_temp):
+	if(f_name_temp):
 		f_name = f_name_temp.string
-		f_price = f_soup.find_all("span",class_="selling-price omniture-field")[0].string
-		f_author = (f_soup.find_all(href=re.compile("/author/[\w\s,.$><?@#$%^&*()_:-]+"))[0]).string
-		f_img = (f_soup.find_all("img",class_="productImage  current")[0])['data-src']
+		f_price_temp = f_soup.find_all("span",class_="selling-price omniture-field")[0]
+		if(f_price_temp):
+			f_price=f_price_temp.string
+		else:
+			f_price="Not Available"
+		f_author_temp = (f_soup.find_all(href=re.compile("/author/[\w\s,.$><?@#$%^&*()_:-]+"))[0])
+		if(f_author_temp):
+			f_author = f_author_temp.string
+		else:
+			f_author="Unknown"
+		f_img_temp = (f_soup.find_all("img",class_="productImage  current")[0])['data-src']
+		if(f_img_temp):
+			f_img=f_img_temp
 
+	return f_price
