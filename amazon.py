@@ -17,8 +17,10 @@ def amazon(isbn):
 	br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]           # [('User-agent', 'Firefox')]
 	response = br.open(a_link)
 	a_soup = BeautifulSoup(response.read())
-	a_class = a_soup.findAll('span',class_="price3P")[0]
+	a_class = a_soup.findAll('span',class_="price3P")
 	if not a_class:
 		return 'NA'
+	else:
+		a_class = a_class[0]
 	a_price = re.findall(r'</span> (.*?)</span>',str(a_class))[0]
 	return a_price.replace('.00','')
