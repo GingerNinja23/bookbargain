@@ -20,7 +20,7 @@ def flipkart(isbn):
 
 	#Getting the data
 	f_title_temp =(f_soup.find(itemprop="name"))
-	if(f_name_temp):
+	if(f_title_temp):
 		f_title = f_title_temp.string
 
 		f_price_temp = f_soup.find_all("span",class_="selling-price omniture-field")[0]
@@ -50,3 +50,6 @@ def flipkart(isbn):
 	flip_dict = {'name':f_title,'price':f_price,'author':f_author,'image_url':f_img}
 
 	return flip_dict
+
+isbn = raw_input()
+print flipkart(isbn)
