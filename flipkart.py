@@ -24,7 +24,8 @@ def flipkart(isbn):
 		f_author="NA"
 		f_img = "NA"
 		f_desc="NA"
-
+		flip_dict = {'name':f_title,'price':f_price,'author':f_author,'image_url':f_img,'desc':f_desc,'url':f_link}
+		return flip_dict
 
 	#Creating the soup
 
