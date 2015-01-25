@@ -3,12 +3,15 @@ from bs4 import BeautifulSoup
 import time
 import mechanize
 import re
-
+import pyisbn
 
 def flipkart(isbn):
 	#Getting the Source
 	start_time = time.time()
-	f_link = "http://www.flipkart.com/search?q="+isbn
+	if len(isbn) == 10:
+		f_link = "http://www.flipkart.com/search?q="+pyisbn.Isbn10(isbn).convert(code='978')
+	else:
+		f_link = "http://www.flipkart.com/search?q="+isbn
 	br = mechanize.Browser()
 	br.set_handle_robots(False)   # ignore robots
 	br.set_handle_refresh(False)  # can sometimes hang without this
