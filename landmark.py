@@ -24,5 +24,8 @@ def landmark(isbn):
 		return {'price':'NA','url':l_link}
 	else:
 		l_class = l_class[0]
-	l_price = re.findall(r'Rs</span>(.*?)</span>',str(l_class))[0]
+	try:
+		l_price = re.findall(r'Rs</span>(.*?)</span>',str(l_class))[0]
+	except Exception, e:
+		return {'price':'NA','url':l_link}	
 	return {'price':l_price,'url':l_link}

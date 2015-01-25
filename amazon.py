@@ -25,5 +25,8 @@ def amazon(isbn):
 		return {'price':'NA','url':a_link}
 	else:
 		a_class = a_class[0]
-	a_price = re.findall(r'</span> (.*?)</span>',str(a_class))[0]
+	try:
+		a_price = re.findall(r'</span> (.*?)</span>',str(a_class))[0]
+	except Exception, e:
+		return {'price':'NA','url':a_link}
 	return {'price':a_price.replace('.00',''),'url':a_link}

@@ -24,5 +24,8 @@ def uread(isbn):
 		return {'price':'NA','url':u_link}
 	else:
 		u_tag = u_tag[0]
-	u_price = re.findall(r'</span>(.*?)</label>',str(u_tag))[0]
+	try:
+		u_price = re.findall(r'</span>(.*?)</label>',str(u_tag))[0]
+	except Exception, e:
+		return {'price':'NA','url':u_link}
 	return {'price':u_price,'url':u_link}
