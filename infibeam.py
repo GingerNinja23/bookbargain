@@ -22,5 +22,5 @@ def infibeam(isbn):
 	try:
 		i_price = re.findall(r'</span> (.*?)</span>',str(i_class))[0]
 	except Exception, e:
-		turn {'price':'NA','url':i_link}
+		return {'price':'NA','url':i_link}
 	return {'price':i_price,'url':i_link}
