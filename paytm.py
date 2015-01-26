@@ -11,8 +11,12 @@ def paytm(isbn):
 	# print p_link
 	driver = webdriver.PhantomJS('phantomjs',service_args=['--ssl-protocol=any'])
 	# driver = webdriver.Firefox()
-	driver.get(p_link)
-	content = driver.page_source
+	try:
+		driver.get(p_link)
+		content = driver.page_source
+	except:
+		content = ''
+		return {'price':'NA','url':p_link}eturn
 	# print content	
 	driver.quit()
 	soup = bs.BeautifulSoup(content)
@@ -20,7 +24,7 @@ def paytm(isbn):
 	# print p_class
 	# print p_class
 	if not p_class:
-		return 'NA'	
+		return {'price':'NA','url':p_link}	
 	else:
 		p_class = p_class[0]
 	try:
