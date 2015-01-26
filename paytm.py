@@ -16,12 +16,11 @@ def paytm(isbn):
 		content = driver.page_source
 	except:
 		content = ''
-		return {'price':'NA','url':p_link}eturn
+		return {'price':'NA','url':p_link}
 	# print content	
 	driver.quit()
 	soup = bs.BeautifulSoup(content)
 	p_class = soup.findAll('span',class_="border-radius ng-binding")
-	# print p_class
 	# print p_class
 	if not p_class:
 		return {'price':'NA','url':p_link}	
