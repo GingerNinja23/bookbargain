@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import multiprocessing.pool as mpool
+
 from .modules.flipkart import flipkart
 from .modules.amazon import amazon
 from .modules.uread import uread
@@ -8,8 +9,6 @@ from .modules.landmark import landmark
 from .modules.infibeam import infibeam
 
 from collections import OrderedDict
-
-from flask.ext import restful
 
 import json
 
