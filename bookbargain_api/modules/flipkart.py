@@ -12,6 +12,8 @@ def flipkart(isbn):
 		f_link = "http://www.flipkart.com/search?q="+pyisbn.Isbn10(isbn).convert(code='978')
 	else:
 		f_link = "http://www.flipkart.com/search?q="+isbn
+		
+	f_link = f_link +"&affid=sriteja96"
 	br = mechanize.Browser()
 	br.set_handle_robots(False)   # ignore robots
 	br.set_handle_refresh(False)  # can sometimes hang without this
