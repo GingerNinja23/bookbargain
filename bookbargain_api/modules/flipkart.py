@@ -58,6 +58,8 @@ def flipkart(isbn):
 		#print f_desc_temp
 		if(f_desc_temp):
 			f_desc = f_desc_temp[0].decode_contents(formatter="html")
+			soup = BeautifulSoup(f_desc)
+			f_desc = soup.get_text()
 		else:
 			f_desc="NA"
 
