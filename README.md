@@ -38,7 +38,7 @@ These instructions are for Ubuntu/Debian Wheezy
 Python 2.7.9 and later have pip installed by default. You can skip this step if you already have pip installed.
 ```
 wget https://bootstrap.pypa.io/get-pip.py
-python get-pip.py
+sudo python get-pip.py
 ```
 
 ##### Installing dependencies:
