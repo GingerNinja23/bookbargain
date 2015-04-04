@@ -48,12 +48,15 @@ It is recommended to use virtualenv for setting up the server <br>
 ```
 sudo pip install virtualenv
 virtualenv env
-.env/bin/activate
-sudo pip install flask,pyisbn,mechanize,BeautifulSoup4
+. env/bin/activate
+pip install flask 
+pip install pyisbn
+pip install mechanize
+pip install BeautifulSoup4
 ```
 ##### Downloading the source:
 ``` 
-wget http://goo.gl/A6wdf7
+wget -O bookbargain-api-server-v0.9.1-beta.tar.gz http://goo.gl/A6wdf7
 tar xvzf bookbargain-api-server-v0.9.1-beta.tar.gz
 cd bookbargain-api-server-v0.9.1-beta
 ```
@@ -61,7 +64,7 @@ cd bookbargain-api-server-v0.9.1-beta
 ##### Running the server:
 
 ```
-python runserver.py
+sudo python runserver.py
 ````
 
 Running this command will start the server which by default, listens on all interfaces on port 80. The port number can be easily changed by modifying the following line in runserver.py
