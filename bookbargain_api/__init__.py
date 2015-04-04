@@ -26,7 +26,7 @@ def api():
 
 
 	data = OrderedDict()
-	if(result[0]['name]!="NA"):
+	if(result[0]['name']!="NA"):
 		data["Status"]="Success"
 		data["Book Name"]=result[0]['name']
 		data["Author"]=result[0]['author']
