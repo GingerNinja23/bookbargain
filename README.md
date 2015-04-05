@@ -12,7 +12,7 @@ An open source RESTful API, that delivers the information of a book and its pric
 
 ###Usage
 
-Users are encouraged to setup their own server. But for a small number of requests, users can use our server.<br><br>
+Users are encouraged to setup their own server. Alternatively, the users can use also our server for the API requests.<br><br>
 The usage of the server is as follows:
 ```
 http://bookbargain.in/api?isbn=[ISBN number 10/13]
