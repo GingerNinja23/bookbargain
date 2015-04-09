@@ -1,0 +1,19 @@
+language: python
+python: 2.7
+
+env:
+  - FLASK=0.9
+  - FLASK=0.8
+  - FLASK=0.7
+  - FLASK=0.6
+  - FLASK=0.5
+
+# command to install dependencies
+install:
+  - pip install flask==$FLASK
+  - pip install pyisbn
+  - pip install mechanize
+  - pip install BeautifulSoup4
+
+script:
+  - python tests.py
