@@ -1,4 +1,4 @@
-# Bookbargain API Server
+# Bookbargain API Server [![Build Status](https://travis-ci.org/GingerNinja23/bookbargain.svg?branch=master)](https://travis-ci.org/GingerNinja23/bookbargain)
 An open source RESTful API, that delivers the information of a book and its prices from various Indian E-Commerce stores. The API takes ISBN 10/13 as the input.
 
 ###Currently supported stores:
