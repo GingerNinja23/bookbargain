@@ -1,16 +1,20 @@
 import os
 import unittest
 from bookbargain_api import app as book_api 
+
 '''
 Bookbargain API Server Tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This module tests the Bookbargain API server.
+This test currently makes a call with a random
+ISBN number and checks if the program works 
+correctly.
+
 '''
 
 
 class BookBargainTestCase(unittest.TestCase):
-
     def setUp(self):
         self.app = book_api.test_client()
         book_api.config['TESTING'] = True
