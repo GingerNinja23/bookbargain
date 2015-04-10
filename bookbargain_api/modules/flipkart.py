@@ -1,13 +1,11 @@
 import urllib2
 from bs4 import BeautifulSoup
-import time
 import mechanize
 import re
 import pyisbn
 
 def flipkart(isbn):
 	#Getting the Source
-	start_time = time.time()
 	if len(isbn) == 10:
 		f_link = "http://www.flipkart.com/search?q="+pyisbn.Isbn10(isbn).convert(code='978')
 	else:
@@ -57,11 +55,10 @@ def flipkart(isbn):
 			f_img = "NA"
 
 		f_desc_temp = f_soup.find_all("div",class_="description-text")
-		#print f_desc_temp
 		if(f_desc_temp):
 			f_desc = f_desc_temp[0].decode_contents(formatter="html")
 			soup = BeautifulSoup(f_desc)
-			f_desc = soup.get_text()
+			f_desc = soup.get_text().__str__()
 		else:
 			f_desc="NA"
 
@@ -72,8 +69,7 @@ def flipkart(isbn):
 		f_img = "NA"
 		f_desc="NA"
 
-	print time.time()-start_time
-	flip_dict = {'name':f_title,'price':f_price,'author':f_author,'image_url':f_img,'desc':f_desc,'url':f_link}
+	flip_dict = {'name':str(f_title),'price':str(f_price),'desc':str(f_desc),'author':str(f_author),'image_url':str(f_img),'url':str(f_link)}
 
 	return flip_dict
 

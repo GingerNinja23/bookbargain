@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
-import multiprocessing.pool as mpool
-
+from multiprocessing import Pool
 from .modules.flipkart import flipkart
 from .modules.amazon import amazon
 from .modules.uread import uread
@@ -11,6 +10,7 @@ from .modules.infibeam import infibeam
 from collections import OrderedDict
 
 import json
+import time
 
 app = Flask(__name__)
 
@@ -19,7 +19,8 @@ def worker((target, isbn)):
 
 @app.route("/api",methods=['GET'])
 def api():
-	pool = mpool.ThreadPool()
+	start_time = time.time()
+	pool = Pool(processes=5)
 	isbn = request.args.get('isbn')
 	args = [(target, isbn) for target in (flipkart,amazon,uread,crossword,landmark,infibeam)]
 	result = pool.map(worker, args)
@@ -46,4 +47,5 @@ def api():
 		data["Infibeam URL"]=result[5]['url']
 	else:
 		data["Status"]="Failed/Incorrect ISBN"
+	print time.time()-start_time
 	return json.dumps(data)
