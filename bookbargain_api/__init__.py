@@ -11,6 +11,7 @@ from .modules.infibeam import infibeam
 from collections import OrderedDict
 
 import json
+import time
 
 app = Flask(__name__)
 
@@ -19,6 +20,7 @@ def worker((target, isbn)):
 
 @app.route("/api",methods=['GET'])
 def api():
+	start_time = time.time()
 	pool = mpool.ThreadPool()
 	isbn = request.args.get('isbn')
 	args = [(target, isbn) for target in (flipkart,amazon,uread,crossword,landmark,infibeam)]
@@ -46,4 +48,5 @@ def api():
 		data["Infibeam URL"]=result[5]['url']
 	else:
 		data["Status"]="Failed/Incorrect ISBN"
+	print "Time taken for the call: "+str(time.time()-start_time)
 	return json.dumps(data)
