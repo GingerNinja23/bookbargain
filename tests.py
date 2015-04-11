@@ -23,9 +23,11 @@ class BookBargainTestCase(unittest.TestCase):
     def tearDown(self):
 		pass
 
-    def test_empty_db(self):
-        rv = self.app.get('/api?isbn=9789380501932')
-        assert 'Success' in rv.data
+    def test_function(self):
+        for isbn in ['9789380501932','9780552161275','9780593072493','9780006479895','9780747591054']
+        resp = self.app.get('/api?isbn='+isbn)
+        assert 'Success' in resp.data
+
 
 if __name__ == '__main__':
     unittest.main()
