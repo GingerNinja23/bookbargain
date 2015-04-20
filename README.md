@@ -73,6 +73,7 @@ Running this command will start the server which by default, listens on all inte
 app.run(host='0.0.0.0',port=80,debug=False)
 ```
 
+**NOTE** : Infibeam's robot.txt doesn't allow scraping their books pages. The script ignores robots.txt and scrapes it anyway. So use the script at your own risk! 
 
 ### Issues
 
